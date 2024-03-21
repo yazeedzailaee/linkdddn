@@ -53,6 +53,8 @@ const askForPauseInput = async () => {
   const linkGenerator = fetchJobLinksUser({
     page: listingPage,
     location: config.LOCATION,
+    salary: config.JOB_SALARY_BAND,
+    industry: config.INDUSTRY,
     keywords: config.KEYWORDS,
     workplace: {
       remote: config.WORKPLACE.REMOTE,
@@ -94,8 +96,8 @@ const askForPauseInput = async () => {
       });
 
       console.log(`Applied to ${title} at ${companyName}`);
-    } catch {
-      console.log(`Error applying to ${title} at ${companyName}`);
+    } catch (error) {
+      console.log(`Error applying to ${title} at ${companyName}. Error: ${error}`);
     }
 
     await listingPage.bringToFront();
